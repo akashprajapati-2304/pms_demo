@@ -8,11 +8,31 @@ const startServer = async () => {
       throw new Error("MONGO_URL environment variable is not set");
     }
 
-    await mongoose.connect(env.mongoUrl, {
-      dbName: env.mongoDbName,
-    });
+    // await mongoose.connect(env.mongoUrl, {
+    //   dbName: env.mongoDbName,
+    // });
 
-    console.log("MongoDB connected");
+    // console.log("MongoDB connected");
+
+    let isConnected = false;
+
+    async function connectToMongoDB(){
+      try{
+        await mongoose.connect(env.mongoUrl,{
+          dbName: env.mongoDbName,
+        })
+        isConnected = true
+      }catch(error){
+        console.log(error)
+      }
+    }
+
+    app.use((req, res, next)=>{
+      if (!isConnected){
+        connectToMongoDB()
+      }
+      next()
+    })
 
     app.listen(env.port, () => {
       console.log(`Server is running on port ${env.port}`);
@@ -23,4 +43,4 @@ const startServer = async () => {
   }
 };
 
-startServer();
+module.exports = startServer;
