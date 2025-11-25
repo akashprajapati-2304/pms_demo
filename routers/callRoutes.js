@@ -11,4 +11,3 @@ router.get("/getCallData", auth, getCallData);
 router.get("/getCallStats/:agentId", auth, getCallStatsByAgent);
 
 export default router;
-
