@@ -49,11 +49,11 @@ app.use("/", legacyRoutes);
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 // Note: If you were serving a frontend dist folder, you'll need to re-add that logic here:
-// const frontendDistPath = path.resolve(__dirname, "../frontend/dist");
-// app.use(express.static(frontendDistPath));
-// app.get("*", (req, res) => {
-//   res.sendFile(path.join(frontendDistPath, "index.html"));
-// });
+const frontendDistPath = path.resolve(__dirname, "../frontend/dist");
+app.use(express.static(frontendDistPath));
+app.get("*", (req, res) => {
+  res.sendFile(path.join(frontendDistPath, "index.html"));
+});
 
 // Error Handlers
 app.use(errorHandler.notFound);
