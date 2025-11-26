@@ -7,21 +7,11 @@
     "node": "20.x"
   },
   "scripts": {
-    "start": "nodemon server.js",
-    "vercel-start": "nodemon server.js",
+    "start": "node server.js",
+    "vercel-start": "node server.js",
     "dev": "nodemon server.js",
     "build": "npm install",
-    "build:dev": "webpack --mode development --progress",
-    "build:standalone": "webpack --config webpack.standalone.config.js --progress",
-    "build:standalone:obf": "webpack --config webpack.standalone.obfuscated.config.js --progress",
-    "build:standalone:obf-lite": "webpack --config webpack.standalone.obf-lite.config.js --progress",
-    "build:watch": "webpack --mode development --watch --progress",
-    "serve": "node dist/server.bundle.js",
-    "serve:standalone": "node dist/server.standalone.js",
-    "serve:standalone:obf": "node dist/server.standalone.obf.js",
-    "serve:standalone:obf-lite": "node dist/server.standalone.obf-lite.js",
-    "clean": "rimraf dist",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "vercel-build": "npm install && npm run build"
   },
   "type": "module",
   "keywords": [
