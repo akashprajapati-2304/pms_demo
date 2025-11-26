@@ -26,6 +26,7 @@
     "buffer-equal-constant-time": "^1.0.1"
   },
   "dependencies": {
+    "@vercel/node": "^4.2.6",
     "axios": "^1.13.0",
     "buffer-equal-constant-time": "^1.0.1",
     "cors": "^2.8.5",
